@@ -1,0 +1,62 @@
+/*
+Questão 01
+*/
+
+package javaapplication5;
+
+import java.util.Scanner;
+
+
+
+public class JavaApplication5 {
+
+    
+    public static void main(String[] args) {
+    
+    Qst01 obj = new Qst01();
+    Scanner leEnt = new Scanner(System.in);
+
+    int qtdTanques;
+
+    System.out.println("Dizer a quantidade de tanques cheios que quer analisar:");
+    qtdTanques = leEnt.nextInt();
+
+    obj.exibeDados(qtdTanques);
+  }
+}
+
+class Qst01{
+
+  void exibeDados (int qtdTanques){
+
+    Scanner leInf = new Scanner(System.in);
+    String line;
+    String[] vet;
+    int kms, litros;
+    int kmTotal = 0, litrosTotal = 0;
+    int i;
+
+    for (i = 0; i < qtdTanques; i++){
+
+      System.out.println("Falar a quilometragem e os litros consumidos do " + (i + 1) + "o tanque:");
+      line = leInf.nextLine();
+      vet = line.split(" ");
+      kms = Integer.parseInt(vet[0]);
+      litros = Integer.parseInt(vet[1]);
+
+      System.out.print("O consumo Km/L do " + (i + 1) + " tanque é igual a: ");
+      System.out.printf("%.2f", ((double)kms/litros));System.out.print(" litros por Km");
+
+      kmTotal += kms;
+      litrosTotal += litros;
+    }
+
+    System.out.print("\n\n");
+
+    System.out.println("A quilometragem total é igual a: " + kmTotal);
+    System.out.println("O consumo de litros total é igual a: " + litrosTotal);
+    System.out.print("A media km/L total é igual a: "); 
+    System.out.printf("%.2f", ((double)kmTotal/litrosTotal));
+    System.out.print(" litros por Km\n\n");
+  }
+}
